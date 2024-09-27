@@ -140,12 +140,10 @@ visitors %>%
 _How many regions have more than 50 tourist attraction in the data set? (Hint: You will need to tabulate the data before filtering.)_
 
 ```{r Ex_g}
-#visitors %>% 
-#tabulate(region) %>%
-#filter(______)
+visitors %>% 
+count(region) %>%
+filter(n > 50)
 ```
-
-
 
 # Summarising Data
 
@@ -167,11 +165,11 @@ visitors %>%
 _Perform the same calculation for the 2021 admissions data._
 
 ```{r Ex_h}
-#visitors %>% 
-#  ______(
-#    __________,
-#    __________
-#  )
+visitors %>% 
+  summarise(
+    mean_2021 = mean(n_2021),
+    med_2021 = median(n_2021)
+  )
 ```
 
 All values in the output are `NA`!
