@@ -141,8 +141,8 @@ _How many regions have more than 50 tourist attraction in the data set? (Hint: Y
 
 ```{r Ex_g}
 #visitors %>% 
-#  _____(region) %>%
-#  filter(______)
+#tabulate(region) %>%
+#filter(______)
 ```
 
 
