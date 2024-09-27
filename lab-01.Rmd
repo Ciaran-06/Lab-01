@@ -58,6 +58,7 @@ _What are the variable data types?_
 ```{r Q2_part1}
 class(visitors$n_2022)
 ```
+Integer
 
 ```{r Q2_part2}
 visitors %>% summarise_all(class)
@@ -77,9 +78,9 @@ visitors %>% arrange(desc(n_2022))
 
 _What are the top 10 most visited attractions in 2021?_
 ```{r Ex_c}
-#visitors %>% 
-#  arrange(____(____)) %>%
-#  head(n = ____)
+visitors %>% 
+arrange(desc(n_2021)) %>%
+head(n = 10)
 ```
 
 ## Question 4
@@ -96,7 +97,7 @@ visitors %>% filter(attraction == "National Museum of Scotland")
 _Which attraction had exactly 565,772 visitors in 2022?_
 
 ```{r Ex_d}
-#visitors %>% filter(___ == ____)
+visitors %>% filter(n_2022 == 565772)
 ```
 
 ### Exercise e.
@@ -104,9 +105,9 @@ _Which attraction had exactly 565,772 visitors in 2022?_
 _How many attraction had more than 1 million visitors in 2022?_
 
 ```{r Ex_e}
-#visitors %>% 
-#  filter(____) %>%
-#  count()
+visitors %>% 
+filter( n_2022 > 1000000) %>%
+count()
 ```
 
 ## Question 5
@@ -129,11 +130,9 @@ visitors %>%
 _How many attractions had between 50,000 and 100,000 visitors in 2022?_
 
 ```{r Ex_f}
-#visitors %>% 
-#  ____(
-#    ______,
-#    ______ ) %>%
-#  count()
+visitors %>% 
+  filter( n_2022 >= 50000, n_2022 <= 100000) %>%
+  count()
 ```
 
 ### Exercise g.

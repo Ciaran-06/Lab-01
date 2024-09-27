@@ -423,6 +423,7 @@ visitors %&gt;% count(admission, setting)</code></pre>
 <p><em>What are the variable data types?</em></p>
 <pre class="r"><code>class(visitors$n_2022)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Integer</p>
 <pre class="r"><code>visitors %&gt;% summarise_all(class)</code></pre>
 <pre><code>## # A tibble: 1 × 6
 ##   attraction n_2021  n_2022  admission setting   region   
@@ -451,9 +452,22 @@ visitors %&gt;% count(admission, setting)</code></pre>
 <div id="exercise-c." class="section level3">
 <h3>Exercise c.</h3>
 <p><em>What are the top 10 most visited attractions in 2021?</em></p>
-<pre class="r"><code>#visitors %&gt;% 
-#  arrange(____(____)) %&gt;%
-#  head(n = ____)</code></pre>
+<pre class="r"><code>visitors %&gt;% 
+arrange(desc(n_2021)) %&gt;%
+head(n = 10)</code></pre>
+<pre><code>## # A tibble: 10 × 6
+##    attraction                             n_2021 n_2022 admission setting region
+##    &lt;chr&gt;                                   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; 
+##  1 The Crown Estate, Windsor Great Park   5.40e6 5.64e6 Free      O       South…
+##  2 Royal Botanic Gardens Kew              1.96e6 1.96e6 Members   M       London
+##  3 Natural History Museum (South Kensing… 1.57e6 4.65e6 Free      I       London
+##  4 RHS Garden Wisley                      1.41e6 1.49e6 Members   O       South…
+##  5 The British Museum                     1.33e6 4.10e6 Free      I       London
+##  6 Tate Modern                            1.16e6 3.88e6 Free      I       London
+##  7 Somerset House                         9.85e5 2.35e6 Free      M       London
+##  8 Science Museum                         9.56e5 2.33e6 Free      I       London
+##  9 Jeskyns Community Woodland             8.79e5 4.47e5 Free      O       South…
+## 10 V&amp;A South Kensington                   8.58e5 2.37e6 Free      I       London</code></pre>
 </div>
 </div>
 <div id="question-4" class="section level2">
@@ -468,15 +482,23 @@ visitors %&gt;% count(admission, setting)</code></pre>
 <div id="exercise-d." class="section level3">
 <h3>Exercise d.</h3>
 <p><em>Which attraction had exactly 565,772 visitors in 2022?</em></p>
-<pre class="r"><code>#visitors %&gt;% filter(___ == ____)</code></pre>
+<pre class="r"><code>visitors %&gt;% filter(n_2022 == 565772)</code></pre>
+<pre><code>## # A tibble: 1 × 6
+##   attraction                        n_2021 n_2022 admission setting region    
+##   &lt;chr&gt;                              &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;     
+## 1 Knowsley Safari and Knowsley Hall     NA 565772 Members   M       North West</code></pre>
 </div>
 <div id="exercise-e." class="section level3">
 <h3>Exercise e.</h3>
 <p><em>How many attraction had more than 1 million visitors in
 2022?</em></p>
-<pre class="r"><code>#visitors %&gt;% 
-#  filter(____) %&gt;%
-#  count()</code></pre>
+<pre class="r"><code>visitors %&gt;% 
+filter( n_2022 &gt; 1000000) %&gt;%
+count()</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1    22</code></pre>
 </div>
 </div>
 <div id="question-5" class="section level2">
@@ -501,11 +523,13 @@ visitors in 2022?</em></p>
 <h3>Exercise f.</h3>
 <p><em>How many attractions had between 50,000 and 100,000 visitors in
 2022?</em></p>
-<pre class="r"><code>#visitors %&gt;% 
-#  ____(
-#    ______,
-#    ______ ) %&gt;%
-#  count()</code></pre>
+<pre class="r"><code>visitors %&gt;% 
+  filter( n_2022 &gt;= 50000, n_2022 &lt;= 100000) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1    50</code></pre>
 </div>
 <div id="exercise-g." class="section level3">
 <h3>Exercise g.</h3>
